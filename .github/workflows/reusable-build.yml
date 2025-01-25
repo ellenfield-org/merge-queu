@@ -73,7 +73,7 @@ jobs:
 
   clean:
     name: Cleanup ${{ matrix.stream_name }} after removal from merge queue
-    if: github.event.type == 'dequeue'
+    if: github.event.type == 'dequeued'
     runs-on: ubuntu-latest
     needs: [build_container, check]
     steps:
