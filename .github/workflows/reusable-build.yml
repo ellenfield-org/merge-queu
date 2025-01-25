@@ -18,7 +18,6 @@ on:
       images:
         description: "An array of images built and pushed to the registry"
         value: ${{ jobs.check.outputs.images }}
-env:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}-${{ inputs.brand_name}}-${{ inputs.stream_name }}
