@@ -1,7 +1,7 @@
-name: Latest Images
+name: b
 on:
   merge_group:
-    type: checks_requested
+    types: checks_requested
   pull_request:
     branches:
       - main
