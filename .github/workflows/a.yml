@@ -8,6 +8,11 @@ on:
       - testing
     paths-ignore:
       - "**.md"
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - dequeued
   workflow_call:
   workflow_dispatch:
 
