@@ -1,0 +1,26 @@
+name: Latest Images
+on:
+  merge_group:
+    type: checks_requested
+  pull_request:
+    branches:
+      - main
+      - testing
+    paths-ignore:
+      - "**.md"
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  build-image-latest:
+    name: Build Latest Images
+    uses: ./.github/workflows/reusable-build.yml
+    secrets: inherit
+    strategy:
+      fail-fast: false
+      matrix:
+        brand_name: ["aurora"]
+    with:
+      image_flavors: '["main", "nvidia", "nvidia-open"]'
+      brand_name: ${{ matrix.brand_name }}
+      stream_name: b
