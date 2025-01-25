@@ -8,11 +8,6 @@ on:
       - testing
     paths-ignore:
       - "**.md"
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - dequeued
   workflow_call:
   workflow_dispatch:
 
@@ -26,6 +21,6 @@ jobs:
       matrix:
         brand_name: ["aurora"]
     with:
-      image_flavors: '["main", "nvidia", "nvidia-open"]'
+      image_flavors: '["main", "nvidia"]'
       brand_name: ${{ matrix.brand_name }}
       stream_name: b

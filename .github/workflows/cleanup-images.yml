@@ -1,0 +1,26 @@
+name: cleanup
+on:
+  pull_request:
+    branches:
+      - main
+      - testing
+    paths-ignore:
+      - "**.md"
+    types:
+      - dequeued
+  workflow_call:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}-${{ inputs.brand_name}}-${{ inputs.stream_name }}
+  cancel-in-progress: true
+
+jobs:
+  clean:
+    name: Cleanup ${{ matrix.stream_name }} after removal from merge queue
+    if: github.event.action == 'dequeued'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Stuff
+        run: |
+          echo "Cleaning up!"
